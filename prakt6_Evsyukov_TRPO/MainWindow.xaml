@@ -1,0 +1,52 @@
+﻿<Window x:Class="prakt6_Evsyukov_TRPO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prakt6_Evsyukov_TRPO"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800"
+        Background="{DynamicResource WindowBg}">
+    
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="0,0,20,0">
+            <TextBlock Text="Панель управления" FontSize="20" FontWeight="Bold"/>
+
+            <TextBlock Text="Выберите сервер:"/>
+            <ComboBox SelectedIndex="0">
+                <ComboBoxItem Content="Сервер №1 (Основной)"/>
+                <ComboBoxItem Content="Сервер №2 (Резервный)"/>
+            </ComboBox>
+
+            <TextBlock Text="Нагрузка CPU:" Margin="0,10,0,0"/>
+            <ProgressBar x:Name="LoadBar" Value="0" Maximum="100"/>
+
+            <CheckBox Content="Включить логирование"/>
+            <CheckBox Content="Автоматическое резервное копирование"/>
+
+            <TextBlock Text="Режим работы:" Margin="0,15,0,5"/>
+            <RadioButton Content="Автоматический" IsChecked="True" GroupName="Mode"/>
+            <RadioButton Content="Ручной" GroupName="Mode"/>
+
+            <Button x:Name="ChangeThemeButton" Content="Сменить тему" Style="{StaticResource SecondaryButtonStyle}" Margin="0,20,0,0" Click="ChangeThemeButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Действия" FontSize="20" FontWeight="Bold"/>
+
+            <Button x:Name="StartBtn" Content="Запустить сервер" Style="{StaticResource BaseButtonStyle}" Click="StartBtn_Click" Margin="0,10,0,10"/>
+
+            <Button x:Name="StopBtn" Content="Остановить сервер" Style="{StaticResource DangerButtonStyle}" Click="StopBtn_Click" IsEnabled="False" Margin="0,0,0,10"/>
+
+            <Button x:Name="RestartBtn" Content="Перезагрузить" Style="{StaticResource LargeDangerButtonStyle}" IsEnabled="False" Click="RestartBtn_Click" Margin="0,10,0,20"/>
+
+            <TextBlock Text="Логи сервера:" Margin="0,10,0,5"/>
+            <TextBox x:Name="LogBox" Height="120" IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
